@@ -1,9 +1,21 @@
 import React from "react";
 import Nav from 'react-bootstrap/Nav';
+import { fetchDoctor } from '../service/api';
 
 function Appointment() {
 
-  
+  const [doctor, setDoctor] = React.useState([]);
+  React.useEffect(() => {
+    const data = {
+      name: "Manik Dalvi",
+    };
+    const fetchThisDoctor = async (data) => {
+      const response = await fetchDoctor(data);
+      console.log(response);
+    };
+    fetchThisDoctor(data);
+    //console.log(doctor);
+  }, []);
 
   return (
     <div>
@@ -12,7 +24,7 @@ function Appointment() {
         <div style={{margin: '2%'}}>
             <h5>Dr. Manik Dalvi</h5>
             <h5>Obstetrics & Gynecology</h5>
-            <button type="button" class="btn btn-primary">View profile</button>
+            <button type="button" className="btn btn-primary">View profile</button>
         </div>
       </div>
       <hr />
@@ -63,7 +75,7 @@ function Appointment() {
         <div style={{textAlign: 'center', padding: '2%', border: '1px solid black', borderRadius: '5px'}}>11:45 AM</div>
         <div style={{textAlign: 'center', padding: '2%', border: '1px solid black', borderRadius: '5px'}}>12:00 PM</div>
       </div>
-      <button type="button" class="btn btn-primary" style={{margin: '2%', marginLeft: '80%'}}>Continue</button>
+      <button type="button" className="btn btn-primary" style={{margin: '2%', marginLeft: '80%'}}>Continue</button>
     </div>
   );
 }
